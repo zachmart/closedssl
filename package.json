@@ -1,0 +1,33 @@
+{
+  "name": "closedssl",
+  "version": "0.0.1",
+  "description": "A pure nodejs utility for working with SSL certificates without any dependency on openSSL",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zachmart/closedssl.git"
+  },
+  "keywords": [
+    "ssl",
+    "typescript",
+    "x509",
+    "certificate",
+    "pure-nodejs",
+    "es6"
+  ],
+  "author": "Zachary Martin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zachmart/closedssl/issues"
+  },
+  "homepage": "https://github.com/zachmart/closedssl#readme",
+  "devDependencies": {
+    "pem": "^1.8.3"
+  },
+  "dependencies": {
+    "node-forge": "^0.6.40"
+  }
+}
