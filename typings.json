@@ -1,4 +1,7 @@
 {
   "name": "closedssl",
-  "dependencies": {}
+  "dependencies": {},
+  "globalDependencies": {
+    "node": "registry:dt/node#6.0.0+20160709114037"
+  }
 }
