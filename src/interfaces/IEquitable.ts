@@ -19,18 +19,12 @@ export function isIEquitable(object: any): object is IEquitable {
     return false;
   }
 
-  if (!("equals" in object)){
+  if (typeof object.equals !== "function"){
     return false;
   }
 
   // test to make sure the equals property is a function that returns boolean values
-  try {
-    let returnedValue = object.equals("test");
-    if (typeof returnedValue !== "boolean"){
-      return false;
-    }
-  } catch (error) {
-    // object.equals was not a callable function
+  if (typeof object.equals("test") !== "boolean") {
     return false;
   }
 

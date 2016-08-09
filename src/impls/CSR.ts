@@ -101,13 +101,13 @@ export class CSR implements ICSR {
     return this._unstructuredName;
   }
 
-  modulus(radix: number): string {
+  modulus(radix: number = 16): string {
     checkRadix(radix);
     const forgePublicKey = forge.pki.publicKeyFromPem(this._publicKeyPEM);
     return forgePublicKey.n.toString(radix);
   }
 
-  publicExponent(radix: number): string {
+  publicExponent(radix: number = 16): string {
     checkRadix(radix);
     const forgePublicKey = forge.pki.publicKeyFromPem(this._publicKeyPEM);
     return forgePublicKey.e.toString(radix);

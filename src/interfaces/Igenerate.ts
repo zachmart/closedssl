@@ -91,14 +91,14 @@ export interface Igenerate {
   csr(subject?: IDistinguishedName,
       v3Extensions?: IV3Extension[],
       key?: IKey | {numBits: number, encryption?: IKeyEncryption},
-      hash?: "sha1" | "sha256" | "sha384" | "sha512" | "md5",
+      hash?: "sha1" | "sha256" | "md5",
       challengePassword?: string,
       unstructuredName?: string): Promise<{csr: ICSR, key: IKey}>;
 
   csrSync(subject?: IDistinguishedName,
           v3Extensions?: IV3Extension[],
           key?: IKey | {numBits: number, encryption?: IKeyEncryption},
-          hash?: "sha1" | "sha256" | "sha384" | "sha512" | "md5",
+          hash?: "sha1" | "sha256" | "md5",
           challengePassword?: string,
           unstructuredName?: string): {csr: ICSR, key: IKey};
   /**

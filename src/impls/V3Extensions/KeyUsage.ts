@@ -72,7 +72,9 @@ export class KeyUsage extends V3Extension implements IKeyUsage {
   }
 
   get _ext(): any {
-    const result = {};
+    const result: any = {};
+
+    result.name = this._name;
     
     for (let usage of this._usages) {
       result[usage] = true;

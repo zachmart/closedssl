@@ -64,35 +64,35 @@ export function isIKey(object: any): object is IKey {
     return false;
   }
 
-  if (typeof object.prime1 !== "function" || typeof object.prime1 !== "string"){
+  if (typeof object.prime1 !== "function" || typeof object.prime1() !== "string"){
     return false;
   }
 
-  if (typeof object.prime2 !== "function" || typeof object.prime2 !== "string"){
+  if (typeof object.prime2 !== "function" || typeof object.prime2() !== "string"){
     return false;
   }
 
-  if (typeof object.exponent1 !== "function" || typeof object.exponent1 !== "string"){
+  if (typeof object.exponent1 !== "function" || typeof object.exponent1() !== "string"){
     return false;
   }
 
-  if (typeof object.exponent2 !== "function" || typeof object.exponent2 !== "string"){
+  if (typeof object.exponent2 !== "function" || typeof object.exponent2() !== "string"){
     return false;
   }
 
-  if (typeof object.coefficient !== "function" || typeof object.coefficient !== "string"){
+  if (typeof object.coefficient !== "function" ||
+      typeof object.coefficient() !== "string"){
     return false;
   }
 
-  if (object.passwordEncrypt()) {
+  if (object.passwordEncrypt) {
     if (typeof object.passwordEncrypt !== "function") {
       return false;
     }
   }
 
   if (object.passwordDecrypt) {
-    if (typeof object.passwordDecrypt !== "function" ||
-        !isIKey(object.passwordDecrypt())) {
+    if (typeof object.passwordDecrypt !== "function") {
       return false;
     }
   }

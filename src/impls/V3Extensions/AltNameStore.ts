@@ -58,10 +58,10 @@ export abstract class AltNameStore extends V3Extension implements IAltNameStore{
         } else if (name.charAt(0) === "*" &&                      // wildcard case
           validator.isFQDN(name.substring(2), dnOpt)){
           type = "DNS";
-        } else if (validator.isURL(name)) {
-          type = "URI";
         } else if (validator.isEmail(name)) {
           type = "EMAIL";
+        } else if (validator.isURL(name)) {
+          type = "URI";
         } else {
           type = "OTHER";
         }
@@ -88,10 +88,12 @@ export abstract class AltNameStore extends V3Extension implements IAltNameStore{
   }
 
   get _ext(): any[] {
-    const result: any[] = [];
+    const result: any = {};
+    result.name = this._name;
+    result.altNames = [];
 
     for (let element of this._altNames){
-      result.push(element._ext)
+      result.altNames.push(element._ext)
     }
 
     return result;

@@ -111,13 +111,13 @@ export class Cert implements ICert {
     return this._endDate;
   }
 
-  modulus(radix: number): string {
+  modulus(radix: number = 16): string {
     checkRadix(radix);
     const forgePublicKey = forge.pki.publicKeyFromPem(this._publicKeyPEM);
     return forgePublicKey.n.toString(radix);
   }
 
-  publicExponent(radix: number): string {
+  publicExponent(radix: number = 16): string {
     checkRadix(radix);
     const forgePublicKey = forge.pki.publicKeyFromPem(this._publicKeyPEM);
     return forgePublicKey.e.toString(radix);
@@ -239,12 +239,12 @@ oNyaBRoTfTDHhwySDWqVqS4awKRZCGFJyTQoBNQEJwELr3LZL0jAkROqF+vbeA==\r
 -----END CERTIFICATE-----\r
 `;
 
-let cert = new Cert(pem3);
-console.log(cert.v3Extensions[3]);
-
-console.log(isICert(cert));
-console.log("fingerprint sha1:", cert.fingerprint("sha1"));
-console.log("fingerprint sha256:", cert.fingerprint("sha256"));
-console.log("fingerprint sha384:", cert.fingerprint("sha384"));
-console.log("fingerprint sha512:", cert.fingerprint("sha512"));
-console.log("fingerprint md5:", cert.fingerprint("md5"));
+// let cert = new Cert(pem3);
+// console.log(cert.v3Extensions[3]);
+//
+// console.log(isICert(cert));
+// console.log("fingerprint sha1:", cert.fingerprint("sha1"));
+// console.log("fingerprint sha256:", cert.fingerprint("sha256"));
+// console.log("fingerprint sha384:", cert.fingerprint("sha384"));
+// console.log("fingerprint sha512:", cert.fingerprint("sha512"));
+// console.log("fingerprint md5:", cert.fingerprint("md5"));

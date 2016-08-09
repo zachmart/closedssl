@@ -1,6 +1,6 @@
 "use strict";
 import {IKey} from "../interfaces/IKey";
-import {IKeyEncryption} from "../interfaces/IKeyEncryption";
+import {IKeyEncryption, isIKeyEncryption} from "../interfaces/IKeyEncryption";
 import {KeyEncryption} from "./KeyEncryption";
 import {checkRadix} from "../utilities/utilities";
 const forge = require("node-forge");
@@ -269,64 +269,70 @@ export class Key implements IKey {
     return this._encryption !== null;
   }
 
-  modulus(radix: number): string {
+  modulus(radix: number = 16): string {
     checkRadix(radix);
-    let forgePrivateKey = forge.pki.privateKeyFromPem(this._privatePEM);
-    return forgePrivateKey.n.toString(radix);
+    let unEncryptedForgeKey: any = this._unEncryptedForgeKey;
+
+    return unEncryptedForgeKey.n.toString(radix);
   }
 
-  publicExponent(radix: number): string {
+  publicExponent(radix: number = 16): string {
     checkRadix(radix);
-    let forgePrivateKey = forge.pki.privateKeyFromPem(this._privatePEM);
-    return forgePrivateKey.e.toString(radix);
+    let unEncryptedForgeKey: any = this._unEncryptedForgeKey;
+
+    return unEncryptedForgeKey.e.toString(radix);
   }
 
-  privateExponent(radix: number): string {
+  privateExponent(radix: number = 16): string {
     checkRadix(radix);
-    let forgePrivateKey = forge.pki.privateKeyFromPem(this._privatePEM);
-    return forgePrivateKey.d.toString(radix);
+    let unEncryptedForgeKey: any = this._unEncryptedForgeKey;
+
+    return unEncryptedForgeKey.d.toString(radix);
   }
 
-  prime1(radix: number): string {
+  prime1(radix: number = 16): string {
     checkRadix(radix);
-    let forgePrivateKey = forge.pki.privateKeyFromPem(this._privatePEM);
-    return forgePrivateKey.p.toString(radix);
+    let unEncryptedForgeKey: any = this._unEncryptedForgeKey;
+
+    return unEncryptedForgeKey.p.toString(radix);
   }
 
-  prime2(radix: number): string {
+  prime2(radix: number = 16): string {
     checkRadix(radix);
-    let forgePrivateKey = forge.pki.privateKeyFromPem(this._privatePEM);
-    return forgePrivateKey.q.toString(radix);
+    let unEncryptedForgeKey: any = this._unEncryptedForgeKey;
+
+    return unEncryptedForgeKey.q.toString(radix);
   }
 
-  exponent1(radix: number): string {
+  exponent1(radix: number = 16): string {
     checkRadix(radix);
-    let forgePrivateKey = forge.pki.privateKeyFromPem(this._privatePEM);
-    return forgePrivateKey.dP.toString(radix);
+    let unEncryptedForgeKey: any = this._unEncryptedForgeKey;
+
+    return unEncryptedForgeKey.dP.toString(radix);
   }
 
-  exponent2(radix: number): string {
+  exponent2(radix: number = 16): string {
     checkRadix(radix);
-    let forgePrivateKey = forge.pki.privateKeyFromPem(this._privatePEM);
-    return forgePrivateKey.dQ.toString(radix);
+    let unEncryptedForgeKey: any = this._unEncryptedForgeKey;
+
+    return unEncryptedForgeKey.dQ.toString(radix);
   }
 
-  coefficient(radix: number): string {
+  coefficient(radix: number = 16): string {
     checkRadix(radix);
-    let forgePrivateKey = forge.pki.privateKeyFromPem(this._privatePEM);
-    return forgePrivateKey.qInv.toString(radix);
+    let unEncryptedForgeKey: any = this._unEncryptedForgeKey;
+
+    return unEncryptedForgeKey.qInv.toString(radix);
   }
 
   passwordEncrypt(encryption: IKeyEncryption): IKey {
-    let unEncryptedForgeKey: any;
-    let encryptedPEM: string;
-
-    if (this._encryption) {
-      unEncryptedForgeKey = forge.pki.decryptRsaPrivateKey(this._privatePEM,
-                                                           this._encryption.password);
-    } else {
-      unEncryptedForgeKey = forge.pki.privateKeyFromPem(this._privatePEM);
+    if (!isIKeyEncryption(encryption)) {
+      throw new Error(`The argument to the Key.passwordEncrypt must be an object${""
+      } conforming to the IKeyEncryption interface object`);
     }
+
+    let unEncryptedForgeKey: any = this._unEncryptedForgeKey;
+    let encryptedPEM: string;
 
     encryptedPEM = forge.pki.encryptRsaPrivateKey(unEncryptedForgeKey,
                                                   encryption.password,
@@ -351,6 +357,19 @@ export class Key implements IKey {
     }
 
     return new Key(forge.pki.privateKeyToPem(unEncryptedForgeKey));
+  }
+
+  private get _unEncryptedForgeKey(): any {
+    let unEncryptedForgeKey: any;
+
+    if (this._encryption) {
+      unEncryptedForgeKey = forge.pki.decryptRsaPrivateKey(this._privatePEM,
+        this._encryption.password);
+    } else {
+      unEncryptedForgeKey = forge.pki.privateKeyFromPem(this._privatePEM);
+    }
+
+    return unEncryptedForgeKey;
   }
 }
 

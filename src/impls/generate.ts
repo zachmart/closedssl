@@ -122,6 +122,7 @@ Promise<{csr: ICSR, key: IKey}> {
   if (!subject) {
     subject = new DistinguishedName();
   } else if (!isIDistinguishedName(subject)) {
+    console.error("v3Exts async ==> ", v3Extensions);
     return Promise.reject(new Error(`The generate csr function can only receive${""
       } objects that conform to the IDistinguishedName interface for the subject${""
       } argument, given: ${subject}`));
@@ -261,6 +262,7 @@ function csrSync(subject?: IDistinguishedName,
   let v3ExtensionsCheck = _checkV3Extensions(v3Extensions);
 
   if (v3ExtensionsCheck === null) {
+    console.error("v3Exts sync==> ", v3Extensions, v3ExtensionsCheck);
     throw new Error(`The generate csr function can only receive ${""
       } arrays of objects that conform to the IV3Extension interface for the${""
       } v3Extensions argument, given: ${v3Extensions}`);
@@ -566,7 +568,7 @@ function certSync(
     throw new Error(`The generate cert function was given a "signer" argument${""
       } in an incorrect format, given: ${signer}`);
   }
-
+  console.log("alpha");
   let cert = _cert(
     subj,
     subjPublicKeyPEM,
@@ -606,7 +608,7 @@ function _cert(
     forgeExtensions.push(ext._ext);
   }
   cert.setExtensions(forgeExtensions);
-  cert.publicKey(forge.pki.publicKeyFromPem(publicKeyPEM));
+  cert.publicKey = forge.pki.publicKeyFromPem(publicKeyPEM);
 
   let md: any;
   let hash = options.hash;
@@ -625,7 +627,14 @@ function _cert(
       throw new Error(`Unrecognized message digest hash algorithm: ${hash}`);
   }
 
-  cert.sign(forge.pki.privateKeyFromPem(issuerKey.privatePEM), md);
+  let decryptedIssuerKey: IKey;
+  if (issuerKey.isEncrypted) {
+    decryptedIssuerKey = issuerKey.passwordDecrypt();
+  } else {
+    decryptedIssuerKey = issuerKey;
+  }
+
+  cert.sign(forge.pki.privateKeyFromPem(decryptedIssuerKey.privatePEM), md);
 
   return new Cert(forge.pki.certificateToPem(cert));
 }
@@ -679,10 +688,10 @@ let encryption = new KeyEncryption("pass-gas", "3des", true);
 //   console.log("error:", error);
 // });
 
-console.log(generate.csrSync(new DistinguishedName("Zach", "CO"),
-  [new BasicConstraints(true, 5)],
-  {numBits: 512, encryption: encryption},
-  "sha256",
-  "cp",
-  "usn"
-));
+// console.log(generate.csrSync(new DistinguishedName("Zach", "CO"),
+//   [new BasicConstraints(true, 5)],
+//   {numBits: 512, encryption: encryption},
+//   "sha256",
+//   "cp",
+//   "usn"
+// ));
