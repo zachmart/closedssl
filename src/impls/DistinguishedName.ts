@@ -214,6 +214,17 @@ export class DistinguishedName implements IDistinguishedName {
     return result;
   }
 
+  public equals(that: any): boolean {
+    return isIDistinguishedName(that) &&
+           this.commonName === that.commonName &&
+           this.country === that.country &&
+           this.state === that.state &&
+           this.locality === that.locality &&
+           this.organization === that.organization &&
+           this.organizationalUnit === that.organizationalUnit &&
+           this.email === that.email;
+  }
+
   public toString(): string {
     let result = "";
 

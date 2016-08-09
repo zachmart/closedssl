@@ -1,10 +1,11 @@
 "use strict";
+import {IEquitable, isIEquitable} from "./IEquitable";
 
 /**
  * Created by zacharymartin on July 16, 2016.
  */
 
-export interface IDistinguishedName {
+export interface IDistinguishedName extends IEquitable {
   readonly commonName: string | null;
   readonly country: string | null;
   readonly state: string | null;
@@ -18,6 +19,10 @@ export interface IDistinguishedName {
 
 export function isIDistinguishedName(object: any): object is IDistinguishedName {
   if (typeof object !== "object") {
+    return false;
+  }
+
+  if (!isIEquitable(object)) {
     return false;
   }
 
