@@ -5,7 +5,7 @@
  */
 
 export interface ISerializable<T> {
-  serialize: T;
+  jsonObject: T;
 }
 
 export function isISerializable<T>(object: any): object is ISerializable<T> {
@@ -13,7 +13,7 @@ export function isISerializable<T>(object: any): object is ISerializable<T> {
     return false;
   }
 
-  if (typeof object.serialize !== "function") {
+  if (typeof object.jsonObject !== "object") {
     return false;
   }
 

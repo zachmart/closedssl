@@ -1,5 +1,6 @@
 "use strict";
 import {IDistinguishedName, isIDistinguishedName} from "../interfaces/IDistinguishedName";
+import {IDistinguishedNameS, isIDistinguishedNameS} from "../interfaces/IDistinguishedNameS";
 
 /**
  * Created by zacharymartin on July 22, 2016.
@@ -23,9 +24,9 @@ export class DistinguishedName implements IDistinguishedName {
               organization?: string | null,
               organizationalUnit?: string | null,
               email?: string | null);
-  constructor(jsonObj: IDistinguishedName);
+  constructor(jsonObj: IDistinguishedNameS);
 
-  constructor(arg1?: IDistinguishedName | string | null,
+  constructor(arg1?: IDistinguishedNameS | string | null,
               country?: string | null,
               state?: string | null,
               locality?: string | null,
@@ -85,7 +86,7 @@ export class DistinguishedName implements IDistinguishedName {
       this._organizationalUnit = organizationalUnit ? organizationalUnit : null;
       this._email = email ? email : null;
 
-    } else if (isIDistinguishedName(arg1)) {
+    } else if (isIDistinguishedNameS(arg1)) {
 
       this._commonName = arg1.commonName;
       this._country = arg1.country;
@@ -140,7 +141,7 @@ export class DistinguishedName implements IDistinguishedName {
     return this._email;
   }
 
-  get jsonObject(): IDistinguishedName {
+  get jsonObject(): IDistinguishedNameS {
     return {
       commonName: this._commonName,
       country: this._country,
