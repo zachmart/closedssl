@@ -568,7 +568,7 @@ function certSync(
     throw new Error(`The generate cert function was given a "signer" argument${""
       } in an incorrect format, given: ${signer}`);
   }
-  console.log("alpha");
+
   let cert = _cert(
     subj,
     subjPublicKeyPEM,

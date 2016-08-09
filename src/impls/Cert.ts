@@ -64,8 +64,6 @@ export class Cert implements ICert {
       this._hash = forgeCert.md.algorithm;
       this._startDate = forgeCert.validity.notBefore;
       this._endDate = forgeCert.validity.notAfter;
-
-      console.log("publicKey:", forgeCert.publicKey.n.bitLength());
     } else {
       throw new Error(`The Cert constructor argument "${arg}" is not acceptable`);
     }

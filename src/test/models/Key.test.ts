@@ -101,16 +101,16 @@ describe("Key", function(){
       ];
 
       for(let testCase of testCases){
-        describe("")
-
-
-        let key = new Key(testCase.sit.privatePEMString, testCase.sit.password);
-        it("should have the same public key", function(){
-          key.publicPEM.should.equal(testCase.sit.publicPEMString);
-        });
-        it("should have the same private key", function(){
-          key.privatePEM.should.equal(testCase.sit.privatePEMString);
-        });
+        // describe("")
+        //
+        //
+        // let key = new Key(testCase.sit.privatePEMString, testCase.sit.password);
+        // it("should have the same public key", function(){
+        //   key.publicPEM.should.equal(testCase.sit.publicPEMString);
+        // });
+        // it("should have the same private key", function(){
+        //   key.privatePEM.should.equal(testCase.sit.privatePEMString);
+        // });
       }
     });
   });
