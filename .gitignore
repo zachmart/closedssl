@@ -4,3 +4,5 @@ closedSSL.iml
 lib/
 **/node_modules/
 **/typings
+**/testCertsAndKeys/
+src/test/practice/
