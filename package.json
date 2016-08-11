@@ -4,7 +4,8 @@
   "description": "A pure nodejs utility for working with SSL certificates without any dependency on openSSL",
   "main": "lib/index.js",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha \"./lib/test/**/*.js\" --reporter \"nyan\""
+    "test": "./node_modules/mocha/bin/mocha \"./lib/test/**/*.js\" --reporter \"nyan\"",
+    "ci-test": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- -R tap \"./lib/test/**/*.js\" > test.tap && ./node_modules/istanbul/lib/cli.js report clover"
   },
   "repository": {
     "type": "git",
@@ -27,6 +28,7 @@
   "devDependencies": {
     "casual": "^1.5.3",
     "chai": "^3.5.0",
+    "istanbul": "^0.4.4",
     "mocha": "^2.5.3",
     "pem": "^1.8.3",
     "typescript": "^2.0.0"
