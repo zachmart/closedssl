@@ -1,8 +1,9 @@
 {
   "name": "closedssl",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "description": "A pure nodejs utility for working with SSL certificates without any dependency on openSSL",
   "main": "lib/index.js",
+  "typings": "lib/index",
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha \"./lib/test/**/*.js\" --reporter \"nyan\"",
     "ci-test": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- -R tap \"./lib/test/**/*.js\" > test.tap && ./node_modules/istanbul/lib/cli.js report clover",

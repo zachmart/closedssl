@@ -1,0 +1,7 @@
+.idea/
+closedSSL.iml
+src/
+**/node_modules/
+**/typings
+testCertsAndKeys/
+lib/test/
