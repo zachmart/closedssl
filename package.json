@@ -1,6 +1,6 @@
 {
   "name": "closedssl",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "A pure nodejs utility for working with SSL certificates without any dependency on openSSL",
   "main": "lib/index.js",
   "typings": "lib/index",
