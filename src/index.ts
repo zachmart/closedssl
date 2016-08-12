@@ -7,8 +7,8 @@ import {ICSR} from "./interfaces/ICSR";
 import {CSR} from "./impls/CSR";
 import {ICert} from "./interfaces/ICert";
 import {IDistinguishedName} from "./interfaces/IDistinguishedName";
-import {DistinguishedName} from "../lib/impls/DistinguishedName";
-import {IKeyEncryption} from "../lib/interfaces/IKeyEncryption";
+import {DistinguishedName} from "./impls/DistinguishedName";
+import {IKeyEncryption} from "./interfaces/IKeyEncryption";
 import {KeyEncryption} from "./impls/KeyEncryption";
 import {ICertOptions} from "./interfaces/ICertOptions";
 import {CertOptions} from "./impls/CertOptions";
@@ -19,7 +19,7 @@ import {ExtendedKeyUsage} from "./impls/V3Extensions/ExtendedKeyUsage";
 import {IBasicConstraints} from "./interfaces/V3Extensions/IBasicConstraints";
 import {BasicConstraints} from "./impls/V3Extensions/BasicConstraints";
 import {ISubjectAlternativeName} from "./interfaces/V3Extensions/ISubjectAlternativeName";
-import {SubjectAlternativeName} from "../lib/impls/V3Extensions/SubjectAlternativeName";
+import {SubjectAlternativeName} from "./impls/V3Extensions/SubjectAlternativeName";
 
 /**
  * Created by zacharymartin on July 11, 2016.

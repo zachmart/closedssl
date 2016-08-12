@@ -9,7 +9,6 @@ import {IV3Extension, isIV3Extension} from "../interfaces/V3Extensions/IV3Extens
 import {ICSR, isICSR} from "../interfaces/ICSR";
 import {DistinguishedName} from "./DistinguishedName";
 import {CSR} from "./CSR";
-import {BasicConstraints} from "./V3Extensions/BasicConstraints";
 import {ICert, isICert} from "../interfaces/ICert";
 import {ICertOptions, isICertOptions} from "../interfaces/ICertOptions";
 import {Cert} from "./Cert";

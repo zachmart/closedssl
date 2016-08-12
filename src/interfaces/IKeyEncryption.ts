@@ -1,5 +1,4 @@
 "use strict";
-import {IKey} from "../../lib/interfaces/IKey";
 
 /**
  * Created by zacharymartin on July 19, 2016.

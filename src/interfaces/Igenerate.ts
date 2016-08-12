@@ -1,5 +1,4 @@
 "use strict";
-import {IKeyOptions} from "./IKeyOptions";
 import {IKey} from "./IKey";
 import {IDistinguishedName} from "./IDistinguishedName";
 import {IV3Extension} from "./V3Extensions/IV3Extension";

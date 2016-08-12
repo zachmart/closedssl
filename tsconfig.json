@@ -6,11 +6,11 @@
     "noImplicitAny": false,
     "declaration": true,
     "allowJs": false,
-    "outDir": "lib",
+    "outDir": "./lib",
     "strictNullChecks": true
   },
   "exclude": [
-    "node_modules",
-    "lib"
+    "./node_modules",
+    "./lib"
   ]
 }

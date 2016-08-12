@@ -1,5 +1,4 @@
 "use strict";
-import {IKeyOptions} from "./IKeyOptions";
 import {IKeyEncryption, isIKeyEncryption} from "./IKeyEncryption";
 
 
