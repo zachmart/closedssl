@@ -6,7 +6,8 @@
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha \"./lib/test/**/*.js\" --reporter \"nyan\"",
     "ci-test": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- -R tap \"./lib/test/**/*.js\" > test.tap && ./node_modules/istanbul/lib/cli.js report clover",
-    "typescript-transpile": "./node_modules/typescript/bin/tsc"
+    "typescript-transpile": "./node_modules/typescript/bin/tsc",
+    "install-typings": "./node_modules/typings/dist/bin.js install"
   },
   "repository": {
     "type": "git",
@@ -32,7 +33,8 @@
     "istanbul": "^0.4.4",
     "mocha": "^2.5.3",
     "pem": "^1.8.3",
-    "typescript": "^2.0.0"
+    "typescript": "^2.0.0",
+    "typings": "^1.3.2"
   },
   "dependencies": {
     "node-forge": "^0.6.42",
