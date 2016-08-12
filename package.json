@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha \"./lib/test/**/*.js\" --reporter \"nyan\"",
-    "ci-test": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- -R tap \"./lib/test/**/*.js\" > test.tap && ./node_modules/istanbul/lib/cli.js report clover"
+    "ci-test": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- -R tap \"./lib/test/**/*.js\" > test.tap && ./node_modules/istanbul/lib/cli.js report clover",
     "typescript-transpile": "./node_modules/typescript/bin/tsc"
   },
   "repository": {
