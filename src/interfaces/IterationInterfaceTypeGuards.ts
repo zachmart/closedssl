@@ -4,7 +4,7 @@
  * Created by zacharymartin on July 14, 2016.
  */
 
-export function isIterator<T>(object: any): object is Iterator<T> {
+function isIterator<T>(object: any): object is Iterator<T> {
   // test that the type of object is "object"
   if (!object || typeof object !== "object"){
     return false;
@@ -28,7 +28,7 @@ export function isIterator<T>(object: any): object is Iterator<T> {
   return true;
 }  
 
-export function isIterable<T>(object: any): object is Iterable<T> {
+function isIterable<T>(object: any): object is Iterable<T> {
   // make sure object is not null or undefined, but an empty string is iterable
   if (!object && !(typeof object === "string")) {
     return false

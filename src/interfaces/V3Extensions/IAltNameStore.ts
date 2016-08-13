@@ -1,7 +1,7 @@
 "use strict";
 import {IV3Extension, isIV3Extension} from "./IV3Extension";
 import {IAlternativeName} from "./IAlternativeName";
-import {isIterable} from "../IterationInterfaceTypeGuards";
+import {isIterable} from "iteration-typeguards";
 
 /**
  * Created by zacharymartin on July 12, 2016.

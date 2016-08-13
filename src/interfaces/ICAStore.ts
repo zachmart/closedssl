@@ -1,6 +1,6 @@
 "use strict";
 import {ICert} from "./ICert";
-import {isIterable} from "./IterationInterfaceTypeGuards";
+import {isIterable} from "iteration-typeguards";
 
 /**
  * Created by zacharymartin on August 04, 2016.
