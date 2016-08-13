@@ -1,13 +1,13 @@
 {
   "name": "closedssl",
   "version": "0.0.1",
-  "description": "A pure nodejs utility for working with SSL certificates without any dependency on openSSL",
+  "description": "A typescript/ES6 utility for working with SSL certificates without any dependency on openSSL",
   "main": "lib/index.js",
   "typings": "lib/index",
   "scripts": {
     "preversion": "npm test",
     "version": "npm run typescript-transpile && git add --all",
-    "postversion": "git push && git push --tags",
+    "postversion": "git push && git push --tags && npm publish",
     "test": "./node_modules/mocha/bin/mocha \"./lib/test/**/*.js\" --reporter \"nyan\"",
     "ci-test": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- -R tap \"./lib/test/**/*.js\" > test.tap && ./node_modules/istanbul/lib/cli.js report clover",
     "typescript-transpile": "./node_modules/typescript/bin/tsc --project .",
@@ -22,7 +22,7 @@
     "typescript",
     "x509",
     "certificate",
-    "pure-nodejs",
+    "pem",
     "es6"
   ],
   "author": "Zachary Martin",
