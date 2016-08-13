@@ -10,7 +10,7 @@
     "postversion": "git push && git push --tags && npm publish",
     "test": "./node_modules/mocha/bin/mocha \"./lib/test/**/*.js\" --reporter \"nyan\"",
     "ci-test": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- -R tap \"./lib/test/**/*.js\" > test.tap && ./node_modules/istanbul/lib/cli.js report clover",
-    "typescript-transpile": "./node_modules/typescript/bin/tsc --project .",
+    "typescript-transpile": "rm -rf lib && ./node_modules/typescript/bin/tsc --project .",
     "install-typings": "./node_modules/typings/dist/bin.js install"
   },
   "repository": {
